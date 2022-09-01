@@ -3,8 +3,12 @@
 #include <unistd.h>
 #include <vector>
 #include <stdlib.h>
+#include <ctime>
+
 int main(int ac, char *av[]){
+    srand(static_cast<long int>(time(0)));
     long long num = 0;
+
     std::vector<unsigned long long> vect;
     
     if(ac <= 1){
@@ -18,18 +22,21 @@ int main(int ac, char *av[]){
 
     //Store number in Vector
     for(int i = 0; i < num; i++){
-        long int lrand48(void);
-        long int randNum = lrand48()%num;
-        std::cout<<"randNum: " << randNum << std::endl;
+        long int randNum = rand()%num;
+        //std::cout<<"randNum: " << randNum << std::endl;
         vect.push_back(randNum);
     }
+
+    long long ptr = 0;
 
     std::chrono::time_point<std::chrono::high_resolution_clock> start_time = std::chrono::high_resolution_clock::now();
 
     long long sum = 0;
 
-    for(int val : vect){
-        sum += val;
+    for(int i = 0; i < num; i++){
+        sum+=vect[ptr];
+        ptr = vect[ptr];
+
     }
 
     std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
