@@ -25,7 +25,7 @@ int main(int ac, char *av[]){
     std::chrono::time_point<std::chrono::high_resolution_clock> end_time = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<double> elapsed = end_time - start_time;
-    std::cout<<"elapsed time is: " << elapsed.count() <<"\nSum is: " << sum <<std::endl;
+    std::cout<<"elapsed time is: " << elapsed.count()<<std::endl;
 
 
     return 0;
